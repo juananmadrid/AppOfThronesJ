@@ -1,6 +1,6 @@
 package es.kronox.appofthronesj
 
-// SINGLETON
+// SINGLETON (se declara con "object")
 
 object CharactersRepo {
 
@@ -18,8 +18,8 @@ object CharactersRepo {
 
         // Usando Lambda MAP
         val dummies : MutableList<Character> =
-            return (1..10).map { index ->                       // Podemos omitir el index
-            intToCharacter(index)                               // Map recibe una lambda
+            return (1..10).map { it ->                       // Podemos omitir el "it""
+            intToCharacter(it)                               // Map recibe una lambda y el argumento it (índice)
         }.toMutableList()
     }
 

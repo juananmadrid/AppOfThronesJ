@@ -35,10 +35,10 @@ class CharactersActivity : AppCompatActivity() {
             showDetails()
         } */
 
-        val characters: MutableList<Character> = CharactersRepo.characters
-        adapter.setCharacters(characters)
+        val characters: MutableList<Character> = CharactersRepo.characters  // Cargamos Mutablelist desde el Repositorio
+        adapter.setCharacters(characters)                                   // Seteamos el adaptados con la Mutablelist cargada
 
-        list.adapter = adapter
+        list.adapter = adapter                                              // Seteamos el adaptador del RecyclerView con ese adaptador
 
     }
 

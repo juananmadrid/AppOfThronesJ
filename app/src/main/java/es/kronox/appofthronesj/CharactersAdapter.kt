@@ -9,7 +9,7 @@ import android.widget.TextView
 class CharactersAdapter : RecyclerView.Adapter<CharactersAdapter.CharacterViewHolder> {
                                                // Hereda de clase interna o aniada
 
-    // Creamos dos constructores, uno que no detecta clicks y otro que sí que recibe lambda a ejecutar con click
+    // Creamos 2 constructores, uno que no detecta clicks y otro que sí y que recibe lambda a ejecutar con click
 
     constructor() : super() {
         itemClickListener = null
@@ -19,12 +19,14 @@ class CharactersAdapter : RecyclerView.Adapter<CharactersAdapter.CharacterViewHo
         this.itemClickListener = itemClickListener
     }
 
-    // Lambda a ejecutar cuando haya un click sobre una fila
-    private val itemClickListener: ((Character, Int) -> Unit)?
-
     private val items = mutableListOf<Character>()         // Abreviado con inferencia de tipos
     // val items : MutableList<Character> = mutableListOf()
 
+    // Lambda a ejecutar cuando haya un click sobre una fila
+    private val itemClickListener: ((Character, Int) -> Unit)?
+
+
+    // 3 Métodos del adapter como interface
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_character, parent, false)
         return CharacterViewHolder(view)
@@ -45,15 +47,16 @@ class CharactersAdapter : RecyclerView.Adapter<CharactersAdapter.CharacterViewHo
         items.clear()
         items.addAll(characters)
 
-        notifyDataSetChanged()              // NOTIFICAMOS para recargar toda la lista
+        notifyDataSetChanged()              // NOTIFICAMOS al Adaptador para recargar toda la lista cada vez k añadamos un nuevo elemento
     }
 
 
     // inner class: clase anidada ó clase dentro de otra clase
+    // VIEW HOLDER
     inner class CharacterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {    // itemView: elemento de una sola fila en una lista
 
         var character: Character? = null
-
+            // seteamos datos del viewholder
             set(value) {                                                                    // seteamos a la vez que el character toda la información del campo en la vista
                 itemView.findViewById<TextView>(R.id.label_name).text = value?.name         // solo ejecuta si value dist. null
                 field = value             // character = value
