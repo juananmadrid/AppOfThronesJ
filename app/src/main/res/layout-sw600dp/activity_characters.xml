@@ -5,18 +5,18 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/list"
+    <FrameLayout
+            android:id="@+id/listContainer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.4"/>
 
-            <LinearLayout
+            <FrameLayout
+                    android:id="@+id/detailContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.6"
-                    android:background="#A07EDF">
-            </LinearLayout>
+                    android:layout_weight="0.6">
+            </FrameLayout>
 
 </LinearLayout>
 
